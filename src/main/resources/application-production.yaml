@@ -5,10 +5,23 @@ spring:
 
   cloud:
     gcp:
+      project-id: ${YOUR_GCP_PROJECT_ID}
+      credentials:
+        location: ${LOCAL_PRIVATE_KEY_FILE}
+        scopes: ${SCOPE_1},${SCOPE_2},${SCOPE_3}
       sql:
         database-name: ${DB_NAME}
         instance-connection-name: ${INSTANCE_CONNECTION_NAME}
-
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${CLIENT_ID}
+            client-secret: ${CLIENT_SECRET}
+            redirect-uri: ${REDIRECT_URI}
+            scope: openid, email, profile
 springdoc:
   api-docs:
     enabled: false
+
